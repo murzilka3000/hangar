@@ -29,3 +29,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const swiperCat = new Swiper('.swiper-employees', {
+      // Optional parameters
+      direction: 'horizontal',
+      loop: true,
+      slidesPerView: 4, // Показывать по одному слайду
+      spaceBetween: 20, // Отступ между слайдами
+    });
+  });
+
