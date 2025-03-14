@@ -926,12 +926,12 @@ footer {
   max-width: 1200px;
 }
 
-.main-image {
+.main-image, .main-image2 {
   position: relative;
   width: 100%;
 }
 
-.main-image img {
+.main-image img, .main-image2 img  {
   width: 100%;
   height: auto;
   display: block;
@@ -944,7 +944,7 @@ footer {
   height: auto; /* Закомментировано, чтобы высота определялась содержимым */
 }
 
-.text-content {
+.text-content, .text-content2 {
   padding: 25px;
   position: absolute;
   top: 0;
@@ -958,19 +958,19 @@ footer {
   margin-left: -15px;
 }
 
-.text-content.active {
+.text-content.active, .text-content2.active {
   opacity: 1; /* Сделано видимым */
   position: relative; /* Возвращено в нормальный поток */
 }
 
-.text-content h2 {
+.text-content h2, .text-content2 h2 {
   margin-bottom: 8px;
   font-weight: 700;
   font-size: 18px;
   color: #121212;
 }
 
-.text-content > :nth-child(2) {
+.text-content > :nth-child(2), .text-content2 > :nth-child(2) {
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -978,7 +978,7 @@ footer {
   margin-bottom: 8px;
 }
 
-.text-content > :nth-child(3) {
+.text-content > :nth-child(3), .text-content2 > :nth-child(3) {
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -1004,7 +1004,7 @@ footer {
   gap: 20px;
 }
 
-.preview {
+.preview, .preview-1 {
   width: 100%;
   object-fit: cover;
   margin-right: 5px;
@@ -1015,12 +1015,14 @@ footer {
   min-width: 215px;
 }
 
-.preview.active {
+.preview.active, .preview-1.active {
   opacity: 1;
 }
 
 .prev,
-.next {
+.next,
+.prev2,
+.next2 {
   position: absolute;
   top: 40%;
   transform: translateY(-50%);
@@ -1030,11 +1032,11 @@ footer {
   background: transparent;
 }
 
-.prev {
+.prev, .prev2 {
   left: 10px;
 }
 
-.next {
+.next, .next2 {
   right: 25px;
 }
 
@@ -1077,3 +1079,23 @@ footer {
 
 
 /* big slider end */
+
+
+
+
+
+.flex-1 {
+  display: flex;
+}
+
+.flex-1 > :first-child {
+  flex: 1.5;
+}
+
+.flex-1 > :last-child {
+  flex: 1;
+}
+
+.preview-1 {
+  min-width: 227px!important
+}
