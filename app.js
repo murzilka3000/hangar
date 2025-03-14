@@ -42,3 +42,61 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+
+
+
+
+
+
+  const mainImage = document.querySelector('.main-image img');
+  const previews = document.querySelectorAll('.preview');
+  const textContents = document.querySelectorAll('.text-content');
+  const prevButton = document.querySelector('.prev');
+  const nextButton = document.querySelector('.next');
+  
+  const images = [
+    "./images/slide-1.png",
+    "./images/slide-2.png",
+    "./images/slide-1.png",
+    "./images/slide-2.png",
+    "./images/slide-1.png",
+    "./images/slide-1.png",
+  ];
+  
+  let currentIndex = 0;
+  
+  function updateContent() {
+    // Update main image
+    mainImage.src = images[currentIndex];
+  
+    // Update active preview
+    previews.forEach(preview => preview.classList.remove('active'));
+    previews[currentIndex].classList.add('active');
+  
+    // Update active text content
+    textContents.forEach(content => content.classList.remove('active'));
+    textContents[currentIndex].classList.add('active');
+  }
+  
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateContent();
+  }
+  
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateContent();
+  }
+  
+  previews.forEach((preview, index) => {
+    preview.addEventListener('click', () => {
+      currentIndex = index;
+      updateContent();
+    });
+  });
+  
+  nextButton.addEventListener('click', nextSlide);
+  prevButton.addEventListener('click', prevSlide);
+  
+  // Initialize
+  updateContent();
