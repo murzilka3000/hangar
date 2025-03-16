@@ -34,59 +34,62 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+  const mainVideoFrame = document.getElementById('main-video-frame');
+const previews = document.querySelectorAll('.preview');
+const textContentsDesktop = document.querySelectorAll('.text-content-container-desk .text-content'); // Выбираем текст для десктопа
+const textContentsMobile = document.querySelectorAll('.text-content-container-mob .text-content'); // Выбираем текст для мобильных
+const prevButton = document.querySelector('.prev');
+const nextButton = document.querySelector('.next');
 
-  const mainImage = document.querySelector('.main-image img');
-  const previews = document.querySelectorAll('.preview');
-  const textContents = document.querySelectorAll('.text-content');
-  const prevButton = document.querySelector('.prev');
-  const nextButton = document.querySelector('.next');
-  
-  const images = [
-    "./images/slide-1.png",
-    "./images/slide-2.png",
-    "./images/slide-1.png",
-    "./images/slide-2.png",
-    "./images/slide-1.png",
-    "./images/slide-1.png",
-  ];
-  
-  let currentIndex = 0;
-  
-  function updateContent() {
-    // Update main image
-    mainImage.src = images[currentIndex];
-  
-    // Update active preview
-    previews.forEach(preview => preview.classList.remove('active'));
-    previews[currentIndex].classList.add('active');
-  
-    // Update active text content
-    textContents.forEach(content => content.classList.remove('active'));
-    textContents[currentIndex].classList.add('active');
-  }
-  
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % images.length;
-    updateContent();
-  }
-  
-  function prevSlide() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    updateContent();
-  }
-  
-  previews.forEach((preview, index) => {
-    preview.addEventListener('click', () => {
-      currentIndex = index;
-      updateContent();
-    });
-  });
-  
-  nextButton.addEventListener('click', nextSlide);
-  prevButton.addEventListener('click', prevSlide);
-  
-  // Initialize
+// Array of VK video IDs (replace with actual IDs)
+const videoIds = [
+  "456242934", // Example VK Video ID.  Replace with YOUR video ID.
+  "456242933",
+  "456242932",
+  "456242931",
+  "456242930"
+];
+
+let currentIndex = 0;
+
+function updateContent() {
+  mainVideoFrame.src = `https://vk.com/video_ext.php?oid=-177825273&id=${videoIds[currentIndex]}`;
+
+  // Update active preview
+  previews.forEach(preview => preview.classList.remove('active'));
+  previews[currentIndex].classList.add('active');
+
+  // Update active text content for desktop
+  textContentsDesktop.forEach(content => content.classList.remove('active'));
+  textContentsDesktop[currentIndex].classList.add('active');
+
+  // Update active text content for mobile
+  textContentsMobile.forEach(content => content.classList.remove('active'));
+  textContentsMobile[currentIndex].classList.add('active');
+}
+
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % videoIds.length;
   updateContent();
+}
+
+function prevSlide() {
+  currentIndex = (currentIndex - 1 + videoIds.length) % videoIds.length;
+  updateContent();
+}
+
+previews.forEach((preview, index) => {
+  preview.addEventListener('click', () => {
+    currentIndex = index;
+    updateContent();
+  });
+});
+
+nextButton.addEventListener('click', nextSlide);
+prevButton.addEventListener('click', prevSlide);
+
+// Initialize
+updateContent();
 
 
 
