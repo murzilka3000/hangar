@@ -7,8 +7,79 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 </head>
 <body>
+    <header>
+        <div class="wrapper">
+            <div class="header-cont">
+                <div class="header-block">
+                    <div>
+                        <a href="/">
+                            <img src="./images/logo.svg" alt="">
+                        </a>
+                    </div>
+                    <nav>
+                        <ul class="nav">
+                            <li>
+                                <a href="">
+                                    <img src="./images/header-1.svg" alt="">
+                                    <span>Гаражи</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="./images/header-2.svg" alt="">
+                                    <span>Автомойки</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="./images/header-3.svg" alt="">
+                                    <span>Ангары</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="./images/header-4.svg" alt="">
+                                    <span>Коровники</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="./images/header-5.svg" alt="">
+                                    <span>Магазины</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="./images/header-6.svg" alt="">
+                                    <span>Здания</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="header-right">
+                        <div>
+                            <div>
+                                <img src="./images/header-ico.svg" alt="">
+                            </div>
+                            <div>
+                                <a href="tel:+74999554588">+7 (499) <span>955-45-88</span></a>
+                                <p>ПН-ВС, с 9-00 до 23-00</p>
+                            </div>
+                        </div>
+                        <div>
+                            <button>
+                                Обратный звонок
+                            </button>
+                            <img src="./images/burger.svg" alt="" class="burger">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     <main>
         <div class="green"></div>
         <section class="hangar">
@@ -17,8 +88,8 @@
                     <div>
                         <h1>Ангар</h1>
                         <h6>
-                            из сэндвич-панелей СОБСТВЕННОГО ПРОИЗВОДСТВА 
-                            <br> от 15 тыс. руб/м2*
+                            <span>из сэндвич-панелей</span> <span>СОБСТВЕННОГО ПРОИЗВОДСТВА </span>
+                            <br> <span>от 15 тыс. руб/м2*</span>
                         </h6>
                         <div class="hangar-flex">
                             <div class="hangar-flex-item">
@@ -52,6 +123,11 @@
                                 </p>
                             </div>
                         </div>
+                        <img src="./images/present.svg" alt="" class="only-767">
+                        <button class="cat-mob">
+                            <img src="./images/book.svg" alt="">
+                            Получить каталог
+                        </button>
                     </div>
                     <div class="hangar-form-cont">
                         <h4>
@@ -78,29 +154,61 @@
                         <img src="./images/hero-fly.svg" alt="" class="hero-fly">
                         <p>Цены актуальны до 25 ноября</p>
                     </div>
+                    <img src="./images/present.svg" alt="" class="present">
                 </div>
             </div>
         </section>
-        <section class="projects">
+        <div class="hangar-flex-1">
+            <div class="hangar-flex-item">
+                <div>
+                    <img src="./images/mob-1.svg" alt="">
+                </div>
+                <p>
+                    Предоставляем всю
+                    документацию и 
+                    работаем по договору
+                </p>
+            </div>
+            <div class="hangar-flex-item">
+                <div>
+                    <img src="./images/mob-2.svg" alt="">
+                </div>
+                <p>
+                    Проектируем с 
+                    соблюдением 
+                    всех норм и правил
+                </p>
+            </div>
+            <div class="hangar-flex-item">
+                <div>
+                    <img src="./images/mob-3.svg" alt="">
+                </div>
+                <p>
+                    Приедем к Вам и 
+                    произведем замеры за 0  
+                    рублей
+                </p>
+            </div>
+        </div>
+        <section class="projects" style="display: none;">
             <div class="slider-3">
                 <div class="wrapper">
-                    <div class="slider-3-cont">
-                        <h2>Все о зданиях из сэндвич панелей на нашем канале</h2>
+                    <div class="slider-3-cont none-border">
+                        <h2>Наши проекты</h2>
                     </div>
                 </div>
                 <div class="wrapper2">
                     <div class="container">
                         <div class="big-slider">
                             <div class="main-image2">
-                                <img src="./images/slide-1.png" alt="Main Image">
-                              </div>
+                                <a href="./images/slide-1.png" data-fancybox="gallery" data-caption="Описание изображения 1">
+                                    <img src="./images/slide-1.png" alt="Main Image">
+                                </a>
+                                <img src="./images/litebox.svg" alt="" class="litebox">
+                            </div>
                               <div class="text-content-container">
-                                <div class="text-content active" data-index="0">
-                                  <h2>Строительство ангара с автомойкой 1500 м2 - 1</h2>
-                                  <p>с. Немчиновка, Московская обл.</p>
-                                  <p>
-                                    Видео обзор с полным циклом строительства на один из самых крупных объектов, построенный компанией «Строим Для Вас». Это ангар с автомойкой для техники из сэндвич панелей, общей площадью 1500 м2, строительство которого у нас заняло 57 дней! Все подробности в видео.
-                                  </p>
+                                <div class="text-content2 active" data-index="0">
+                                  <h2>Ангар с автомойкой для техники из сэндвич панелей</h2>
                                   <div class="table">
                                     <div>
                                         <p>Площадь:</p>
@@ -183,18 +291,24 @@
                               </div>
                         </div>
                         <div class="flex-1">
-                            <div class="preview-images">
-                                <img src="./images/slide-1.png" alt="Preview 1" class="preview active" data-index="0">
+                            <div class="preview-images preview-images-1">
+                                <img src="./images/slide-1.png" alt="Preview 1" class="preview-1 active" data-index="0">
                                 <img src="./images/slide-2.png" alt="Preview 2" class="preview-1" data-index="1">
                                 <img src="./images/slide-1.png" alt="Preview 3" class="preview-1" data-index="2">
                                 <img src="./images/slide-2.png" alt="Preview 4" class="preview-1" data-index="3">
-                                <img src="./images/slide-1.png" alt="Preview 6" class="preview-1" data-index="4">
+                                <img src="./images/slide-1.png" alt="Preview 5" class="preview-1" data-index="4">
                                 <img src="./images/slide-1.png" alt="Preview 6" class="preview-1" data-index="5">
-                                <img src="./images/slide-1.png" alt="Preview 6" class="preview-1" data-index="6">
+                                <img src="./images/slide-1.png" alt="Preview 7" class="preview-1" data-index="6">
                               </div>
-                              <div>
-                                <button>trbtr</button>
-                                <button>trbtr</button>
+                              <div class="big-slider-buttons-1">
+                                <button>
+                                    <img src="./images/device-message.svg" alt="">
+                                    Получить консультацию
+                                </button>
+                                <button>
+                                    <img src="./images/device-message.svg" alt="">
+                                    Узнать стоимость данного объекта
+                                </button>
                               </div>
                         </div>
                     </div>
@@ -273,7 +387,7 @@
                 </div>
             </div>
         </section>
-        <div class="slider-3">
+        <div class="slider-3 slider-3-first">
             <div class="wrapper">
                 <div class="slider-3-cont">
                     <h2>Все о зданиях из сэндвич панелей на нашем канале</h2>
@@ -398,20 +512,33 @@
                         <h3>Мы ответим на любые ваши вопросы</h3>
                         <div>
                             <form action="">
-                                <div class="g-form-block">
-                                    <img src="./images/user-square.svg" alt="">
-                                    <input type="text" name="" id="" placeholder="Имя">
+                                <div class="flex-11">
+                                    <div class="g-form-block">
+                                        <img src="./images/user-square.svg" alt="">
+                                        <input type="text" name="" id="" placeholder="Имя">
+                                    </div>
+                                    <div class="g-form-block">
+                                        <img src="./images/call.svg" alt="">
+                                        <input type="text" name="" id="" placeholder="Телефон">
+                                    </div>
                                 </div>
-                                <div class="g-form-block">
-                                    <img src="./images/call.svg" alt="">
-                                    <input type="text" name="" id="" placeholder="Телефон">
+                                <div>
+                                    <div class="pol pol-mob">
+                                        <div>
+                                            <img src="./images/i.svg" alt="">
+                                        </div>
+                                        <p>
+                                            Я ознакомлен (на) с <a href="">соглашением</a> 
+                                            об обработке персональных данных
+                                        </p>
+                                    </div>
+                                    <button type="submit" class="g-form-button">
+                                        <img src="./images/computing.svg" alt="">
+                                        Отправить заявку
+                                    </button>
                                 </div>
-                                <button type="submit" class="g-form-button">
-                                    <img src="./images/computing.svg" alt="">
-                                    Отправить заявку
-                                </button>
                             </form>
-                            <div class="pol">
+                            <div class="pol pol-desk">
                                 <div>
                                     <img src="./images/i.svg" alt="">
                                 </div>
@@ -430,14 +557,16 @@
                 <div class="rev-cont">
                     <h2>Отзывы наших клиентов</h2>
                     <div class="rev-cont-flex">
-                        <div>
-                            <img src="./images/rev-1.png" alt="">
-                        </div>
-                        <div>
-                            <img src="./images/rev-2.png" alt="">
-                        </div>
-                        <div>
-                            <img src="./images/rev-3.png" alt="">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="./images/rev-1.png" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./images/rev-2.png" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./images/rev-3.png" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -448,10 +577,9 @@
                 <div class="video-cont">
                     <div>
                         <iframe src="https://vk.com/video_ext.php?oid=-12345678&id=987654321&hd=2" 
-                        width="100%" 
-                        height="450" 
                         allow="autoplay; encrypted-media" 
                         frameborder="0" 
+                        width="100%"
                         allowfullscreen>
                         </iframe>
                     </div>
@@ -476,11 +604,7 @@
                 <div class="contacts-cont">
                     <h2>Наши контакты</h2>
                     <div>
-                        <div style="position: relative; width: 100%; padding-top: 50%; overflow: hidden; border-radius: 8px;">
-                            <iframe 
-                                src="https://yandex.com/map-widget/v1/?ll=37.764492%2C55.448699&mode=whatshere&whatshere%5Bpoint%5D=37.764492%2C55.448699&whatshere%5Bzoom%5D=17&z=17"
-                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px; border: none;">
-                            </iframe>
+                        <div class="map">
                             <div class="contacts-abs">
                                 <div>
                                     <img src="./images/tel.svg" alt="">
@@ -504,6 +628,11 @@
                                     </p>
                                 </div>
                             </div>
+                            <div class="map-iframe-cont">
+                                <iframe 
+                                src="https://yandex.com/map-widget/v1/?ll=37.764492%2C55.448699&mode=whatshere&whatshere%5Bpoint%5D=37.764492%2C55.448699&whatshere%5Bzoom%5D=17&z=17">
+                                </iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -515,20 +644,33 @@
                     <h2>Обратный звонок</h2>
                     <div>
                         <form action="">
-                            <div class="g-form-block">
-                                <img src="./images/user-square-2.svg" alt="">
-                                <input type="text" name="" id="" placeholder="Имя">
+                            <div class="flex-11">
+                                <div class="g-form-block">
+                                    <img src="./images/user-square-2.svg" alt="">
+                                    <input type="text" name="" id="" placeholder="Имя">
+                                </div>
+                                <div class="g-form-block">
+                                    <img src="./images/call-2.svg" alt="">
+                                    <input type="text" name="" id="" placeholder="Телефон">
+                                </div>
                             </div>
-                            <div class="g-form-block">
-                                <img src="./images/call-2.svg" alt="">
-                                <input type="text" name="" id="" placeholder="Телефон">
+                            <div>
+                                <div class="pol pol-2 pol-mob">
+                                    <div>
+                                        <img src="./images/i-2.svg" alt="">
+                                    </div>
+                                    <p>
+                                        Я ознакомлен (на) с <a href="">соглашением</a> 
+                                        об обработке персональных данных
+                                    </p>
+                                </div>
+                                <button type="submit" class="g-form-button">
+                                    <img src="./images/computing.svg" alt="">
+                                    Отправить заявку
+                                </button>
                             </div>
-                            <button type="submit" class="g-form-button">
-                                <img src="./images/computing.svg" alt="">
-                                Отправить заявку
-                            </button>
                         </form>
-                        <div class="pol pol-2">
+                        <div class="pol pol-2 pol-desk">
                             <div>
                                 <img src="./images/i-2.svg" alt="">
                             </div>
@@ -546,10 +688,12 @@
         <div class="wrapper">
             <div class="footer-cont">
                 <div>
-                    <p>©2024. Все права защищены</p>
-                </div>
-                <div>
-                    <a href="">Политика конфинденциальности</a>
+                    <div>
+                        <p>©2024. Все права защищены</p>
+                    </div>
+                    <div>
+                        <a href="">Политика конфинденциальности</a>
+                    </div>
                 </div>
                 <div>
                     <a href="">
@@ -568,6 +712,7 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script src="./app.js"></script>
 </body>
 </html>
