@@ -261,3 +261,96 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   });
 });
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const popup = document.getElementById("callback-popup");
+  const btn = document.querySelector(".tel-popup");
+  const close = document.querySelector(".close-tel-popup");
+
+  // Открытие попапа
+  btn.addEventListener("click", function () {
+      popup.style.display = "flex";
+  });
+
+  // Закрытие по кнопке ×
+  close.addEventListener("click", function () {
+      popup.style.display = "none";
+  });
+
+  // Закрытие при клике вне окна
+  window.addEventListener("click", function (e) {
+      if (e.target === popup) {
+          popup.style.display = "none";
+      }
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const swiperCat = new Swiper('.swiper-tel-cont', {
+    direction: 'horizontal',
+    loop: true,
+    slidesPerView: 3, // Всегда 3 слайда в видимой области
+    spaceBetween: 16, // Отступы между слайдами
+    centeredSlides: true,
+    initialSlide: 1,
+    navigation: {
+      nextEl: '.next3', // Кнопка для следующего слайда
+      prevEl: '.prev3', // Кнопка для предыдущего слайда
+    },
+    effect: "coverflow",
+    coverflowEffect: {
+      rotate: 0,
+      stretch: 0,
+      depth: 150, // Глубина эффекта
+      modifier: 1.5, // Интенсивность эффекта
+      slideShadows: false,
+    },
+  });
+});
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const priceButtons = document.querySelectorAll(".price"); // Выбираем все кнопки
+  const popup = document.getElementById("popup2");
+  const closeBtn = document.querySelector(".close2");
+
+  // Добавляем обработчик события ко всем кнопкам
+  priceButtons.forEach(button => {
+    button.addEventListener("click", function () {
+      popup.style.display = "flex";
+    });
+  });
+
+  // Закрываем попап при клике на "крестик"
+  closeBtn.addEventListener("click", function () {
+    popup.style.display = "none";
+  });
+
+  // Закрываем попап при клике вне его области
+  popup.addEventListener("click", function (event) {
+    if (event.target === popup) {
+      popup.style.display = "none";
+    }
+  });
+});

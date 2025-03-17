@@ -61,8 +61,10 @@
                     </nav>
                     <div class="header-right">
                         <div>
-                            <div>
-                                <img src="./images/header-ico.svg" alt="">
+                            <div class="rel">
+                                <div class="pulse">
+                                    <img src="./images/header-ico.svg" alt="">
+                                </div>
                             </div>
                             <div>
                                 <a href="tel:+74999554588">+7 (499) <span>955-45-88</span></a>
@@ -70,7 +72,7 @@
                             </div>
                         </div>
                         <div>
-                            <button>
+                            <button class="tel-popup">
                                 Обратный звонок
                             </button>
                             <img src="./images/burger.svg" alt="" class="burger">
@@ -490,7 +492,7 @@
                                     <img src="./images/device-message.svg" alt="">
                                     Получить консультацию
                                 </button>
-                                <button>
+                                <button class="price">
                                     <img src="./images/device-message.svg" alt="">
                                     Узнать стоимость данного объекта
                                 </button>
@@ -700,7 +702,7 @@
                             <img src="./images/device-message.svg" alt="">
                             Получить консультацию
                         </button>
-                        <button>
+                        <button class="price">
                             <img src="./images/device-message.svg" alt="">
                             Узнать стоимость данного объекта
                         </button>
@@ -1198,6 +1200,106 @@
                 </form>
             </div>
         </div>
+        <div class="popup" id="callback-popup">
+            <div class="popup-tel-content">
+                <span class="close-tel-popup">
+                    <img src="./images/close.svg" alt="">
+                </span>
+                <div class="swiper-tel-cont">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div>
+                                <img src="./images/test-tel-slide.png" alt="">
+                            </div>
+                            <p>Максим</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <div>
+                                <img src="./images/test-tel-slide.png" alt="">
+                            </div>
+                            <p>Максим</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <div>
+                                <img src="./images/test-tel-slide.png" alt="">
+                            </div>
+                            <p>Максим</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <div>
+                                <img src="./images/test-tel-slide.png" alt="">
+                            </div>
+                            <p>Максим</p>
+                        </div>
+                    </div>
+                    <button class="prev3">
+                        <img src="./images/arr-p.svg" alt="">
+                    </button>
+                    <button class="next3">
+                        <img src="./images/arr-n.svg" alt="">
+                    </button>
+                </div>
+                <div class="popup-tel-block">
+                    <div>
+                        <h5>
+                            Заказать звонок
+                        </h5>
+                    </div>
+                    <p>
+                        Укажите контактные данные и закажите обратный звонок. Наши менеджеры свяжутся с Вами в течение 10-минут
+                    </p>
+                    <form action="">
+                        <div>
+                            <img src="./images/user-square-2.svg" alt="">
+                            <input type="text" name="" id="" placeholder="Имя">
+                        </div>
+                        <div>
+                            <img src="./images/call-2.svg" alt="">
+                            <input type="text" name="" id="" placeholder="Телефон">
+                        </div>
+                        <button type="submit" class="g-form-button">
+                            <img src="./images/computing.svg" alt="">
+                            Отправить заявку
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="popup2" id="popup2">
+            <div class="popup-content2">
+                <span class="close2">
+                    <img src="./images/close.svg" alt="">
+                </span>
+                <div class="bor">
+                    <h5>
+                        Интересует <br> стоимость объекта?
+                    </h5>
+                </div>
+                <p>
+                    Выберите удобный способ получения, укажите свой телефон и мы отправим Вам актуальную цену через 5 минут
+                </p>
+                <div class="pop-cont">
+                    <a href="">
+                        <img src="./images/w-3.svg" alt="">
+                        <p>What`sApp</p>
+                    </a>
+                    <a href="">
+                        <img src="./images/t-3.svg" alt="">
+                        <p>Позвонить</p>
+                    </a>
+                </div>
+                <form action="">
+                    <div>
+                        <img src="./images/call-2.svg" alt="">
+                        <input type="text" name="" id="" placeholder="Телефон">
+                    </div>
+                    <button>
+                        <img src="./images/device-message.svg" alt="">
+                        Узнать стоимость данного объекта
+                    </button>
+                </form>
+            </div>
+        </div>
     </main>
     <footer>
         <div class="wrapper">
@@ -1221,7 +1323,7 @@
                         <img src="./images/f-3.svg" alt="">
                     </a>
                     <a href="">
-                        <img src="./images/f-3.svg" alt="">
+                        <img src="./images/f-4.svg" alt="">
                     </a>
                 </div>
             </div>
