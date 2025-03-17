@@ -354,3 +354,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll(".rev-popup"); // Все изображения
+  const popup = document.getElementById("popup3");
+  const closeBtn = document.querySelector(".close3");
+
+  // Открытие попапа при клике на любую картинку
+  images.forEach(img => {
+    img.addEventListener("click", function () {
+      popup.style.display = "flex";
+    });
+  });
+
+  // Закрытие попапа по кнопке-крестику
+  closeBtn.addEventListener("click", function () {
+    popup.style.display = "none";
+  });
+
+  // Закрытие попапа при клике вне его содержимого
+  popup.addEventListener("click", function (event) {
+    if (event.target === popup) {
+      popup.style.display = "none";
+    }
+  });
+});
