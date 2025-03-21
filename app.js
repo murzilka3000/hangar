@@ -387,3 +387,94 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const selects = document.querySelectorAll(".custom-select");
+
+  selects.forEach(select => {
+      const selectBox = select.querySelector(".select-box");
+      const options = select.querySelectorAll(".option");
+
+      // Открытие и закрытие списка
+      selectBox.addEventListener("click", (e) => {
+          e.stopPropagation(); // Чтобы клик внутри не закрывал список сразу
+          closeAllSelects(); // Закрываем все перед открытием нового
+          select.classList.toggle("open");
+      });
+
+      // Выбор элемента
+      options.forEach(option => {
+          option.addEventListener("click", () => {
+              selectBox.textContent = option.textContent;
+              select.classList.remove("open");
+          });
+      });
+  });
+
+  // Закрытие всех дропдаунов при клике вне
+  document.addEventListener("click", () => {
+      closeAllSelects();
+  });
+
+  function closeAllSelects() {
+      selects.forEach(select => select.classList.remove("open"));
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+function toggleDropdownSecond() {
+  document.querySelector(".second-multi-select").classList.toggle("second-open");
+  document.querySelector(".second-dropdown").style.display = 
+      document.querySelector(".second-dropdown").style.display === "block" ? "none" : "block";
+}
+
+document.addEventListener("click", function (event) {
+  const multiSelect = document.querySelector(".second-multi-select");
+  if (!multiSelect.contains(event.target)) {
+      document.querySelector(".second-dropdown").style.display = "none";
+  }
+});
+
+// Обновление выбранных элементов
+document.querySelectorAll(".second-dropdown input[type=checkbox]").forEach(input => {
+  input.addEventListener("change", function () {
+      const selectedContainer = document.querySelector(".second-selected-options");
+      selectedContainer.innerHTML = ""; // Очищаем перед обновлением
+
+      document.querySelectorAll(".second-dropdown input:checked").forEach(checked => {
+          const tag = document.createElement("div");
+          tag.classList.add("second-tag");
+          tag.innerHTML = `${checked.value} <span onclick="removeTagSecond('${checked.value}')">×</span>`;
+          selectedContainer.appendChild(tag);
+      });
+  });
+});
+
+// Функция удаления тега
+function removeTagSecond(value) {
+  document.querySelectorAll(".second-dropdown input[type=checkbox]").forEach(input => {
+      if (input.value === value) input.checked = false;
+  });
+
+  document.querySelectorAll(".second-tag").forEach(tag => {
+      if (tag.textContent.includes(value)) tag.remove();
+  });
+}
