@@ -3772,3 +3772,11 @@ button::after {
     display: none;
   }
 }
+
+
+
+.big-slider-buttons-1 > :last-child {
+  background: transparent;
+  color: #fec34a;
+  border: 1px solid #fec34a;
+}
