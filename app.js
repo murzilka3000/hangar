@@ -34,143 +34,132 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+
+
+
+
+
   const mainVideoFrame = document.getElementById('main-video-frame');
-const previews = document.querySelectorAll('.preview');
-const textContentsDesktop = document.querySelectorAll('.text-content-container-desk .text-content'); // Выбираем текст для десктопа
-const textContentsMobile = document.querySelectorAll('.text-content-container-mob .text-content'); // Выбираем текст для мобильных
-const prevButton = document.querySelector('.prev');
-const nextButton = document.querySelector('.next');
-
-// Array of VK video IDs (replace with actual IDs)
-const videoIds = [
-  "456242934", // Example VK Video ID.  Replace with YOUR video ID.
-  "456242933",
-  "456242932",
-  "456242931",
-  "456242930"
-];
-
-let currentIndex = 0;
-
-function updateContent() {
-  mainVideoFrame.src = `https://vk.com/video_ext.php?oid=-177825273&id=${videoIds[currentIndex]}`;
-
-  // Update active preview
-  previews.forEach(preview => preview.classList.remove('active'));
-  previews[currentIndex].classList.add('active');
-
-  // Update active text content for desktop
-  textContentsDesktop.forEach(content => content.classList.remove('active'));
-  textContentsDesktop[currentIndex].classList.add('active');
-
-  // Update active text content for mobile
-  textContentsMobile.forEach(content => content.classList.remove('active'));
-  textContentsMobile[currentIndex].classList.add('active');
-}
-
-function nextSlide() {
-  currentIndex = (currentIndex + 1) % videoIds.length;
-  updateContent();
-}
-
-function prevSlide() {
-  currentIndex = (currentIndex - 1 + videoIds.length) % videoIds.length;
-  updateContent();
-}
-
-previews.forEach((preview, index) => {
-  preview.addEventListener('click', () => {
-    currentIndex = index;
-    updateContent();
-  });
-});
-
-nextButton.addEventListener('click', nextSlide);
-prevButton.addEventListener('click', prevSlide);
-
-// Initialize
-updateContent();
-
-
-
-
-
-
-const mainImageContainer2 = document.querySelector('.main-image2 a');
-const previews2 = document.querySelectorAll('.preview-1');
-
-// Получаем оба набора текстовых блоков:
-const textContentsDesk2 = document.querySelectorAll('.text-content-container-desk-2 .text-content2');
-const textContentsMob2 = document.querySelectorAll('.text-content-container-mob-2 .text-content2');
-
-const prevButton2 = document.querySelector('.prev2');
-const nextButton2 = document.querySelector('.next2');
-
-const images2 = [
-    "./images/slide-1.png",
-    "./images/slide-2.png",
-    "./images/slide-1.png",
-    "./images/slide-2.png",
-    "./images/slide-1.png",
-    "./images/slide-1.png",
-];
-
-const captions = [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-];
-
-let currentIndex2 = 0;
-
-function updateContent2() {
-    // Update background image
-    mainImageContainer2.style.backgroundImage = `url(${images2[currentIndex2]})`;
-    mainImageContainer2.href = images2[currentIndex2];
-    mainImageContainer2.dataset.caption = captions[currentIndex2];
-
-    // Update active preview
-    previews2.forEach(preview => preview.classList.remove('active'));
-    previews2[currentIndex2].classList.add('active');
-
-    // Update active text content for BOTH desktop and mobile versions:
-    textContentsDesk2.forEach(content => content.classList.remove('active'));
-    textContentsDesk2[currentIndex2].classList.add('active');
-
-    textContentsMob2.forEach(content => content.classList.remove('active'));
-    textContentsMob2[currentIndex2].classList.add('active');
-}
-
-function nextSlide2() {
-    currentIndex2 = (currentIndex2 + 1) % images2.length;
-    updateContent2();
-}
-
-function prevSlide2() {
-    currentIndex2 = (currentIndex2 - 1 + images2.length) % images2.length;
-    updateContent2();
-}
-
-previews2.forEach((preview, index) => {
+  const previews = document.querySelectorAll('.preview');
+  const textContentsDesktop = document.querySelectorAll('.text-content-container-desk .text-content'); // Выбираем текст для десктопа
+  const textContentsMobile = document.querySelectorAll('.text-content-container-mob .text-content'); // Выбираем текст для мобильных
+  const prevButton = document.querySelector('.prev');
+  const nextButton = document.querySelector('.next');
+  
+  // Array of VK video IDs (replace with actual IDs)
+  const videoIds = [
+    "456242934", // Example VK Video ID.  Replace with YOUR video ID.
+    "456242933",
+    "456242932",
+    "456242931",
+    "456242930"
+  ];
+  
+  let currentIndex = 0;
+  let isAnimating = false;
+  
+  function updateContent(direction = '') {
+    if (isAnimating) return;
+    isAnimating = true;
+    
+    mainVideoFrame.classList.add(direction === 'next' ? 'swipe-left' : 'swipe-right');
+    
+    setTimeout(() => {
+      mainVideoFrame.src = `https://vk.com/video_ext.php?oid=-177825273&id=${videoIds[currentIndex]}`;
+      
+      // Update active preview
+      previews.forEach(preview => preview.classList.remove('active'));
+      previews[currentIndex].classList.add('active');
+  
+      // Update active text content for desktop
+      textContentsDesktop.forEach(content => content.classList.remove('active'));
+      textContentsDesktop[currentIndex].classList.add('active');
+  
+      // Update active text content for mobile
+      textContentsMobile.forEach(content => content.classList.remove('active'));
+      textContentsMobile[currentIndex].classList.add('active');
+  
+      mainVideoFrame.classList.remove('swipe-left', 'swipe-right');
+      isAnimating = false;
+    }, 300);
+  }
+  
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % videoIds.length;
+    updateContent('next');
+  }
+  
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + videoIds.length) % videoIds.length;
+    updateContent('prev');
+  }
+  
+  previews.forEach((preview, index) => {
     preview.addEventListener('click', () => {
-        currentIndex2 = index;
-        updateContent2();
+      currentIndex = index;
+      updateContent();
     });
-});
+  });
+  
+  nextButton.addEventListener('click', nextSlide);
+  prevButton.addEventListener('click', prevSlide);
+  
+  // Добавляем обработку смахиваний
+  let startX = 0;
+  let endX = 0;
+  
+  mainVideoFrame.addEventListener('touchstart', (event) => {
+    startX = event.touches[0].clientX;
+  });
+  
+  mainVideoFrame.addEventListener('touchend', (event) => {
+    endX = event.changedTouches[0].clientX;
+    if (startX - endX > 50) {
+      nextSlide(); // Смахивание влево — следующий слайд
+    } else if (endX - startX > 50) {
+      prevSlide(); // Смахивание вправо — предыдущий слайд
+    }
+  });
+  
+  // Добавляем CSS-анимации
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .swipe-left {
+      animation: swipeLeft 0.3s ease-in-out;
+    }
+    .swipe-right {
+      animation: swipeRight 0.3s ease-in-out;
+    }
+    @keyframes swipeLeft {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-100%);
+      }
+    }
+    @keyframes swipeRight {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(100%);
+      }
+    }
+  `;
+  document.head.appendChild(style);
+  
+  // Initialize
+  updateContent();
+  
 
-nextButton2.addEventListener('click', nextSlide2);
-prevButton2.addEventListener('click', prevSlide2);
 
-// Initialize
-updateContent2();
 
-// Fancybox Initialization (если требуется кастомизация)
-Fancybox.bind('[data-fancybox]', {
-    // Ваши настройки здесь
-});
+
+
+
+
+
 
 
 
@@ -478,3 +467,85 @@ function removeTagSecond(value) {
       if (tag.textContent.includes(value)) tag.remove();
   });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Проверяем наличие контейнера родительского слайдера
+  const projectsSwiperContainer = document.querySelector('.swiper-projects-cont');
+  if (!projectsSwiperContainer) return;
+
+  // Инициализация родительского слайдера (основного)
+  const projectsSwiper = new Swiper(projectsSwiperContainer, {
+      slidesPerView: 1,  // Или 'auto', если слайды должны быть по ширине контента
+      spaceBetween: 20,
+      loop: true,
+      navigation: {
+          nextEl: '.next12',
+          prevEl: '.prev12',
+      },
+  });
+
+  // Ищем все слайды родительского слайдера
+  const projectSlides = projectsSwiperContainer.querySelectorAll('.swiper-slide');
+
+  projectSlides.forEach((slide) => {
+      // Проверяем наличие слайда перед инициализацией
+      if (!slide) return;
+
+      // Находим контейнеры основных слайдов и превью
+      const mainSwiperContainer = slide.querySelector('.swiper-container-main');
+      const thumbsSwiperContainer = slide.querySelector('.swiper-container-thumbs');
+
+      // Проверяем, что контейнеры найдены
+      if (!mainSwiperContainer || !thumbsSwiperContainer) return;
+
+      // Инициализация слайдера превьюшек (Thumbs)
+      const thumbsSwiper = new Swiper(thumbsSwiperContainer, {
+          spaceBetween: 20,
+          slidesPerView: 3,  // Количество видимых превьюшек
+          loop: true,
+          watchSlidesProgress: true,
+          slideToClickedSlide: true,
+          breakpoints: {
+            962: { // Ширина экрана 1024px и больше
+              spaceBetween: 20
+            },
+            0: { // Ширина экрана 640px и больше
+              spaceBetween: 15
+            }
+        }
+      });
+
+      // Инициализация основного слайдера
+      const mainSwiper = new Swiper(mainSwiperContainer, {
+          spaceBetween: 20,
+          loop: true,
+          thumbs: {
+              swiper: thumbsSwiper,
+          },
+      });
+  });
+});
