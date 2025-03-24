@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
       spaceBetween: 20,
       breakpoints: {
         0: { // Ширина экрана 640px и больше
-          slidesPerView: 1,
+          slidesPerView: 1.5,
           spaceBetween: 20
         },
         526: { // Ширина экрана 640px и больше
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
           spaceBetween: 20
         },
         0: { // Ширина экрана 640px и больше
-          slidesPerView: 2,
+          slidesPerView: 2.2,
           spaceBetween: 10
         }
     }
@@ -547,5 +547,18 @@ document.addEventListener('DOMContentLoaded', function() {
               swiper: thumbsSwiper,
           },
       });
+  });
+});
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  Fancybox.bind("[data-fancybox]", {
+      Thumbs: false, // Отключаем миниатюры
   });
 });
