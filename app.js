@@ -34,137 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-
-
-
-
-  const mainVideoFrame = document.getElementById('main-video-frame');
-  const previews = document.querySelectorAll('.preview');
-  const textContentsDesktop = document.querySelectorAll('.text-content-container-desk .text-content'); // Выбираем текст для десктопа
-  const textContentsMobile = document.querySelectorAll('.text-content-container-mob .text-content'); // Выбираем текст для мобильных
-  const prevButton = document.querySelector('.prev');
-  const nextButton = document.querySelector('.next');
-  
-  // Array of VK video IDs (replace with actual IDs)
-  const videoIds = [
-    "456242934", // Example VK Video ID.  Replace with YOUR video ID.
-    "456242933",
-    "456242932",
-    "456242931",
-    "456242930"
-  ];
-  
-  let currentIndex = 0;
-  let isAnimating = false;
-  
-  function updateContent(direction = '') {
-    if (isAnimating) return;
-    isAnimating = true;
-    
-    mainVideoFrame.classList.add(direction === 'next' ? 'swipe-left' : 'swipe-right');
-    
-    setTimeout(() => {
-      mainVideoFrame.src = `https://vk.com/video_ext.php?oid=-177825273&id=${videoIds[currentIndex]}`;
-      
-      // Update active preview
-      previews.forEach(preview => preview.classList.remove('active'));
-      previews[currentIndex].classList.add('active');
-  
-      // Update active text content for desktop
-      textContentsDesktop.forEach(content => content.classList.remove('active'));
-      textContentsDesktop[currentIndex].classList.add('active');
-  
-      // Update active text content for mobile
-      textContentsMobile.forEach(content => content.classList.remove('active'));
-      textContentsMobile[currentIndex].classList.add('active');
-  
-      mainVideoFrame.classList.remove('swipe-left', 'swipe-right');
-      isAnimating = false;
-    }, 300);
-  }
-  
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % videoIds.length;
-    updateContent('next');
-  }
-  
-  function prevSlide() {
-    currentIndex = (currentIndex - 1 + videoIds.length) % videoIds.length;
-    updateContent('prev');
-  }
-  
-  previews.forEach((preview, index) => {
-    preview.addEventListener('click', () => {
-      currentIndex = index;
-      updateContent();
-    });
-  });
-  
-  nextButton.addEventListener('click', nextSlide);
-  prevButton.addEventListener('click', prevSlide);
-  
-  // Добавляем обработку смахиваний
-  let startX = 0;
-  let endX = 0;
-  
-  mainVideoFrame.addEventListener('touchstart', (event) => {
-    startX = event.touches[0].clientX;
-  });
-  
-  mainVideoFrame.addEventListener('touchend', (event) => {
-    endX = event.changedTouches[0].clientX;
-    if (startX - endX > 50) {
-      nextSlide(); // Смахивание влево — следующий слайд
-    } else if (endX - startX > 50) {
-      prevSlide(); // Смахивание вправо — предыдущий слайд
-    }
-  });
-  
-  // Добавляем CSS-анимации
-  const style = document.createElement('style');
-  style.innerHTML = `
-    .swipe-left {
-      animation: swipeLeft 0.3s ease-in-out;
-    }
-    .swipe-right {
-      animation: swipeRight 0.3s ease-in-out;
-    }
-    @keyframes swipeLeft {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-100%);
-      }
-    }
-    @keyframes swipeRight {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(100%);
-      }
-    }
-  `;
-  document.head.appendChild(style);
-  
-  // Initialize
-  updateContent();
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
   document.addEventListener('DOMContentLoaded', function() {
     const swiperCat = new Swiper('.rev-cont-flex', {
       direction: 'horizontal',
@@ -561,4 +430,67 @@ document.addEventListener("DOMContentLoaded", function () {
   Fancybox.bind("[data-fancybox]", {
       Thumbs: false, // Отключаем миниатюры
   });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Инициализация основного слайдера
+  const mainSwiper = new Swiper('.swiper-container-main22', {
+    direction: 'horizontal',
+    loop: true,
+    spaceBetween: 0,
+    slidesPerView: 1,
+    navigation: {  // Добавляем навигацию стрелками
+      nextEl: '.next33',
+      prevEl: '.prev33',
+    },
+  });
+
+  console.log("mainSwiper:", mainSwiper); // Проверка инициализации
+
+  // Инициализация слайдера с миниатюрами
+  const thumbsSwiper = new Swiper('.swiper-container-thumbs22', {
+    spaceBetween: 17,
+    slidesPerView: 5,
+    loop: false,
+    slideToClickedSlide: true,
+    breakpoints: {
+      620: { // Ширина экрана 1024px и больше
+        slidesPerView: 5,
+      },
+      0: { // Ширина экрана 640px и больше
+        slidesPerView: 3
+      }
+  }
+  });
+
+  console.log("thumbsSwiper:", thumbsSwiper); // Проверка инициализации
+
+  // Синхронизация слайдеров (основной и миниатюр)
+  mainSwiper.controller.control = thumbsSwiper;
+  thumbsSwiper.controller.control = mainSwiper;
+
+  // Добавляем обработчик клика на миниатюры (альтернатива slideToClickedSlide)
+  thumbsSwiper.on('click', function(e) {
+    mainSwiper.slideTo(thumbsSwiper.clickedIndex);
+  });
+
 });
