@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', function() {
       loop: true,
       slidesPerView: 4, // Показывать по одному слайду
       spaceBetween: 20,
+      navigation: {
+        nextEl: '.next34', // Кнопка для следующего слайда
+        prevEl: '.prev34', // Кнопка для предыдущего слайда
+      },
       breakpoints: {
         0: { // Ширина экрана 640px и больше
           slidesPerView: 1.5,
@@ -426,11 +430,54 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+
+
+
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
-  Fancybox.bind("[data-fancybox]", {
-      Thumbs: false, // Отключаем миниатюры
+  const dropdowns = document.querySelectorAll(".dropdown");
+
+  dropdowns.forEach(dropdown => {
+      const selectedOption = dropdown.querySelector(".selected-option");
+      const dropdownList = dropdown.querySelector(".dropdown-list");
+      const selectedColor = dropdown.querySelector(".selected-option .selected-color");
+      const dropdownItems = dropdown.querySelectorAll(".dropdown-list .dropdown-item");
+
+      // Toggle dropdown visibility when clicking on the selected option
+      selectedOption.addEventListener("click", function (e) {
+          e.stopPropagation(); // Prevent event bubbling to document
+          dropdownList.style.display = dropdownList.style.display === "block" ? "none" : "block";
+      });
+
+      // Handle item click and change selected color
+      dropdownItems.forEach(item => {
+          item.addEventListener("click", function () {
+              const newColor = this.querySelector(".item-color").style.backgroundColor;
+              selectedColor.style.backgroundColor = newColor;
+              dropdownList.style.display = "none"; // Close dropdown after selection
+          });
+      });
+  });
+
+  // Close dropdown if clicked outside
+  document.addEventListener("click", function () {
+      dropdowns.forEach(dropdown => {
+          const dropdownList = dropdown.querySelector(".dropdown-list");
+          dropdownList.style.display = "none";
+      });
   });
 });
+
+
+
+
+
+
+
 
 
 
@@ -464,8 +511,6 @@ document.addEventListener('DOMContentLoaded', function() {
     },
   });
 
-  console.log("mainSwiper:", mainSwiper); // Проверка инициализации
-
   // Инициализация слайдера с миниатюрами
   const thumbsSwiper = new Swiper('.swiper-container-thumbs22', {
     spaceBetween: 17,
@@ -473,24 +518,36 @@ document.addEventListener('DOMContentLoaded', function() {
     loop: false,
     slideToClickedSlide: true,
     breakpoints: {
-      620: { // Ширина экрана 1024px и больше
+      620: { 
         slidesPerView: 5,
       },
-      0: { // Ширина экрана 640px и больше
+      0: { 
         slidesPerView: 3
       }
   }
   });
 
-  console.log("thumbsSwiper:", thumbsSwiper); // Проверка инициализации
+  console.log("thumbsSwiper:", thumbsSwiper); 
 
-  // Синхронизация слайдеров (основной и миниатюр)
   mainSwiper.controller.control = thumbsSwiper;
   thumbsSwiper.controller.control = mainSwiper;
 
-  // Добавляем обработчик клика на миниатюры (альтернатива slideToClickedSlide)
   thumbsSwiper.on('click', function(e) {
     mainSwiper.slideTo(thumbsSwiper.clickedIndex);
   });
 
 });
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  Fancybox.bind("[data-fancybox]", {
+    Thumbs: { autoStart: true },
+    Carousel: { 
+      Navigation: { next: true, prev: true }
+    }
+  });
+});
+
+
+
