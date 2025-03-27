@@ -628,7 +628,7 @@ table {
 .pol {
   display: flex;
   margin-top: 24px;
-  gap: 12px;
+  gap: 22px;
 }
 
 .pol p {
@@ -3400,8 +3400,7 @@ button::after {
 
 .pol-3 {
   display: flex;
-  gap: 12px;
-  align-items: center;
+  gap: 22px;
   justify-content: flex-end;
 }
 
@@ -3680,6 +3679,7 @@ button::after {
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
+    gap: 25px;
   }
 
   .pol-3-1 p {
@@ -4040,6 +4040,26 @@ button::after {
   display: none!important;
 }
 
+.calc-img-cont > :first-child {
+  margin-bottom: 20px;
+}
+
+.calc-img-cont > :first-child img {
+  border-radius: 8px;
+}
 
 
 
+.toggle-img {
+  position: absolute; /* Важно для наложения изображений друг на друга */
+  opacity: 0;        /* По умолчанию скрываем все изображения */
+  transition: opacity 0.3s ease-in-out; /* Добавляем плавный переход */
+}
+
+.toggle-img.active {
+  opacity: 1;        /* Отображаем активное изображение */
+}
+
+.toggle-block {
+  position: relative; /*  Определяет контекст позиционирования для дочерних элементов */
+}

@@ -551,3 +551,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
+
+const toggleBlocks = document.querySelectorAll('.toggle-block'); // Находим *все* блоки
+
+  toggleBlocks.forEach(block => { // Перебираем *каждый* блок
+    const images = block.querySelectorAll('.toggle-img'); // Находим картинки *внутри этого блока*
+
+    block.addEventListener('click', function() { // Добавляем обработчик клика *к этому блоку*
+      images.forEach(img => {
+        img.classList.toggle('active'); // Переключаем картинки *только в этом блоке*
+      });
+    });
+  });
+
